@@ -9,6 +9,7 @@ public abstract class Actions {
 	public static final int QUERY_TASK = 6;
 	public static final int SORT_TASK = 7;
 	public static final int FILTER_TASK = 8;
+	public static final int QUIT = 9;
 	
 	
 	public abstract void displayMessage();
