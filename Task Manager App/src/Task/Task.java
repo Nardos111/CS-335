@@ -3,7 +3,6 @@ package Task;
 import java.time.LocalDate;
 
 public class Task {
-	private String id;
 	private String title;
 	private LocalDate dueDate;
 	private String description;
@@ -11,10 +10,6 @@ public class Task {
 	private String category;
 	private String status;
 
-	public String getId() {
-		return id;
-	}
-	
 	public String getTitle() {
 		return title;
 	}
@@ -37,10 +32,6 @@ public class Task {
 	
 	public String getStatus() {
 		return status;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
 	}
 	
 	public void setTitle(String title) {
@@ -68,12 +59,11 @@ public class Task {
 	}
 	
 	public String toString() {
-		return id + ", " + title + ", " + description + ", " + category + ", " + status;
+		return title + ", " + dueDate + ", " + description + ", " + priority + ", " + category + ", " + status;
 	}
 	
-	public static Task buildTask(String id, String title, LocalDate dueDate, String description, int priority, String category, String status) {
+	public static Task buildTask(String title, LocalDate dueDate, String description, int priority, String category, String status) {
 		Task task = new Task();
-		task.setId(id);
 		task.setTitle(title);
 		task.setDueDate(dueDate);
 		task.setDescription(description);

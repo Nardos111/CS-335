@@ -17,7 +17,7 @@ public class Create_Task extends Actions {
 				String userInput = scanner.nextLine();
 				
 				String[] inputs = userInput.split(",");
-				if (inputs.length == 7) {
+				if (inputs.length == 6) {
 					return userInput;
 				}
 				else {
@@ -30,7 +30,7 @@ public class Create_Task extends Actions {
 	
 	public void doAction(String action) {
 		String[] inputs = action.split(",");
-		Task task = Task.buildTask(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], inputs[06]);
+		Task task = Task.buildTask(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4], inputs[5]);
 //		Created task needs to be added to a list here
 		
 		System.out.println("New task has been added!");
