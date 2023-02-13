@@ -1,6 +1,7 @@
 package Task;
 
-package Task;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -100,4 +101,21 @@ public class Task_List {
 		}
 		
 	}
+	
+	public void readFile(String filePath) {
+		try {
+			Scanner scanner = new Scanner(new File(filePath));
+			while(scanner.hasNextLine()) {
+				String taskLine = scanner.nextLine();
+				String[] sections = taskLine.split(",");
+				Task task = Task.buildTask(sections[0],sections[1],sections[2],sections[3],sections[4],sections[5],sections[6]);
+				
+			}
+			scanner.close();
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("File does not exist");
+	}
 }
+
+
