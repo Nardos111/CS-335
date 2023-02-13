@@ -32,7 +32,6 @@ public class Create_Task extends Actions {
 		String[] inputs = action.split(",");
 		Task task = Task.buildTask(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4], inputs[5]);
 //		Created task needs to be added to a list here
-		
 		System.out.println("New task has been added!");
 		
 	}	

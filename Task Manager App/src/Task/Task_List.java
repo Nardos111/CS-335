@@ -1,12 +1,17 @@
 package Task;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import actions.*;
 
@@ -61,6 +66,7 @@ public class Task_List {
 			action.doAction(getInput);
 			break;
 		case Actions.QUIT:
+			saveToFile("file_path");
 			openApplication = false;
 			break;
 		}
@@ -115,7 +121,23 @@ public class Task_List {
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File does not exist");
+		}
+	}
+	
+	public void saveToFile(String filePath) {
+		try {
+			FileWriter writer = new FileWriter(filePath, true);
+			BufferedWriter bWriter = new BufferedWriter(writer);
+			PrintWriter pWriter = new PrintWriter(bWriter);
+			List<String> t = Task_List.tasks.entrySet().stream().map(text -> text.getValue().toString()).collect(Collectors.toList());
+			t.forEach((task) -> {
+				pWriter.println(task);
+			});
+			pWriter.close();
+		} catch(IOException e) {
+			System.out.println("File does not exist");
+		}
 	}
 }
 
-
+	
