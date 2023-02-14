@@ -56,7 +56,7 @@ public class Create_Task extends Actions {
 			status = "Completed";
 			break;
 		default: 
-			status="Invalid status";
+			status = "Invalid status";
 			break;
 		}
 		Task task = Task.buildTask(inputs[0], dueDate, inputs[2], priority, inputs[4], status);

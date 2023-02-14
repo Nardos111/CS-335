@@ -34,18 +34,17 @@ public class Task_List {
 		
 		switch(selectAction) {
 		case Actions.CREATE_NEW_TASK:
-			
 			action = new Create_Task();
 			action.displayMessage();
-			String getInput = action.userInput();
-			action.doAction(getInput);
+			String userInput = action.userInput();
+			action.doAction(userInput);
 			break;
 		
 		case Actions.VIEW_TASK:
 			action = new Create_Task();
 			action.displayMessage();
-			String getInput2 = action.userInput();
-			action.doAction(getInput);
+			String userInput2 = action.userInput();
+			action.doAction(userInput2);
 			break;
 			
 		case Actions.VIEW_ALL_TASKS:
@@ -75,6 +74,7 @@ public class Task_List {
 	
 	public void displayInstruction() {
 		System.out.println("Task Manager application running...");
+		System.out.println("");
 		System.out.println("Options: ");
 		System.out.println("_____________________");
 		System.out.println("1. Create a new task");
