@@ -2,6 +2,8 @@ package actions;
 
 import java.util.Scanner;
 
+import Task.Task_List;
+
 public class Delete_Task  extends Actions {
 
 		public void displayMessage() {
@@ -10,7 +12,7 @@ public class Delete_Task  extends Actions {
 		
 		public String userInput() {
 			while(true) {
-				System.out.println("Which task do you want to modify - enter id: ");
+				System.out.println("Enter task number to view details: ");
 				try (Scanner scanner = new Scanner(System.in)) {
 					String userInput = scanner.nextLine();
 					try {
@@ -24,8 +26,17 @@ public class Delete_Task  extends Actions {
 		}
 	
 		public void doAction(String action) {
-//			remove task from list
+			int number = Integer.parseInt(action);
+			while(true) {
+				if(number < Task_List.tasks.size()-1 && number > 0) {
+					Task_List.tasks.remove(number-1);
+					break;
+				}
+				else {
+					System.out.println("Please enter a number between 1 and " + Task_List.tasks.size());
+				}
 			System.out.println("Task was successfully removed");
+
+			}
 		}
-	
 }
