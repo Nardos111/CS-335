@@ -41,17 +41,17 @@ public class Task_List {
 			break;
 		
 		case Actions.VIEW_TASK:
-			action = new Create_Task();
+			action = new View_Task();
 			action.displayMessage();
 			String userInput2 = action.userInput();
 			action.doAction(userInput2);
 			break;
 			
 		case Actions.VIEW_ALL_TASKS:
-			action = new Create_Task();
+			action = new View_All_Tasks();
 			action.displayMessage();
-			String getInput3 = action.userInput();
-			action.doAction(getInput);
+			String userInput3 = action.userInput();
+			action.doAction(userInput3);
 			break;
 		case Actions.MODIFY_TASK:
 			action = new Create_Task();
