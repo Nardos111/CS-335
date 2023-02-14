@@ -53,13 +53,13 @@ public class Task_List {
 			String userInput3 = action.userInput();
 			action.doAction(userInput3);
 			break;
-		case Actions.MODIFY_TASK:
+		case Actions.MODIFY_TASK: //needs to be updated
 			action = new Create_Task();
 			action.displayMessage();
 			String getInput4 = action.userInput();
 			action.doAction(getInput);
 			break;
-		case Actions.DELETE_TASK:
+		case Actions.DELETE_TASK: //needs to be updated
 			action = new Create_Task();
 			action.displayMessage();
 			String getInput5 = action.userInput();
@@ -130,7 +130,7 @@ public class Task_List {
 			FileWriter writer = new FileWriter(filePath, true);
 			BufferedWriter bWriter = new BufferedWriter(writer);
 			PrintWriter pWriter = new PrintWriter(bWriter);
-			List<String> t = Task_List.tasks.entrySet().stream().map(text -> text.getValue().toString()).collect(Collectors.toList());
+			List<String> t = Task_List.tasks.entrySet().stream().map(text -> text.getValue().toString()).collect(Collectors.toList()); //needs to be updated
 			t.forEach((task) -> {
 				pWriter.println(task);
 			});

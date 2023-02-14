@@ -21,7 +21,6 @@ public class View_All_Tasks  extends Actions{
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			String dueDate = task.getDueDate().format(formatter);
 			System.out.println("Task "+counter.get());
-			System.out.println("Task "+counter);
 			System.out.println("Title: " + task.getTitle());
 			System.out.println("Due date: " + dueDate);
 			System.out.println("Description: " + task.getDescription());
