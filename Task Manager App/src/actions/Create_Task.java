@@ -26,7 +26,7 @@ public class Create_Task extends Actions {
 				String priority = scanner.nextLine();
 				System.out.println("Category: ");
 				String category = scanner.nextLine();
-				System.out.println("Status(1. To-do, 2. In-progress, 3. Completed: ");
+				System.out.println("Status(1. To-do, 2. In-progress, 3. Completed): ");
 				String status = scanner.nextLine();
 				if (!title.isEmpty() && "123".contains(priority)) {
 					return title+","+dueDate+","+description+","+priority+","+category+","+status;

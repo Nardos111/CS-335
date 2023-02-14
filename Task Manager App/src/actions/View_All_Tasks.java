@@ -28,7 +28,7 @@ public class View_All_Tasks  extends Actions{
 			System.out.println("Category: " + task.getCategory());
 			System.out.println("Status: " + task.getStatus());
 			System.out.println("");
-			counter.getAndIncrement();
+			counter.getAndIncrement(); //need to increment without returning 
 		});
 	}
 	
