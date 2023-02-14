@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,7 +18,7 @@ import actions.*;
 
 public class Task_List {
 
-	public static Map<String, Task> tasks = new LinkedHashMap<>();
+	public static ArrayList<Task> tasks= new ArrayList<Task>();
 	public static boolean openApplication = true;
 	
 	public void startApplication() {
