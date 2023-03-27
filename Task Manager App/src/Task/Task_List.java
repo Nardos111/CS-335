@@ -26,9 +26,9 @@ public class Task_List {
 	public static boolean openApplication = true;
 	
 	public void startApplication() {
+		readFile("./Task_file/task_list");
 		while(Task_List.openApplication) {
 			displayInstruction();
-			readFile("./Task_file/task_list");
 			int selectAction = getInput();
 			doAction(selectAction);
 		}
@@ -148,7 +148,7 @@ public class Task_List {
 	
 	public void saveToFile(String filePath) {
 		try {
-			FileWriter writer = new FileWriter(filePath, true);
+			FileWriter writer = new FileWriter(filePath, false);
 			BufferedWriter bWriter = new BufferedWriter(writer);
 			PrintWriter pWriter = new PrintWriter(bWriter);
 			tasks.forEach((task) -> {

@@ -21,7 +21,6 @@ public class Delete_Task  extends Actions {
 					} catch(NumberFormatException e ) {
 						System.out.println("Please enter a valid input. ");
 					}
-				
 					return userInput;
 				}
 			}  
@@ -31,7 +30,7 @@ public class Delete_Task  extends Actions {
 public void doAction(String action) {
 	int number = Integer.parseInt(action);
 	
-		if(number < Task_List.tasks.size()-1 && number > 0) {
+		if(number < Task_List.tasks.size()+1 && number > 0) {
 			Task_List.tasks.remove(number-1);
 			//return; 
 		}
