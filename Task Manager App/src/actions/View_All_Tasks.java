@@ -12,7 +12,8 @@ public class View_All_Tasks  extends Actions{
 	}
 	
 	public String userInput() {
-		throw new UnsupportedOperationException("No input is required for this.");
+		//throw new UnsupportedOperationException("No input is required for this.");
+		return null; 
 	}
 	
 	public void doAction(String action) {

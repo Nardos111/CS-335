@@ -3,6 +3,7 @@ package actions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import Task.Task;
 import Task.Task_List;
@@ -14,24 +15,26 @@ public class Modify_Task extends Actions{
 	}
 	
 	public String userInput() {
+		Scanner scanner = new Scanner(System.in);
 		while(true) {
 			System.out.println("Enter task number to view details: ");
-			try (Scanner scanner = new Scanner(System.in)) {
+			
 				String userInput = scanner.nextLine();
 				try {
 					int number = Integer.parseInt(userInput);
 				} catch(NumberFormatException nfe) {
 					System.out.println("Please enter a valid input. ");
 				}
+			
 				return userInput;
 			}
-		}
-	}
+		} 
+	
 	
 	public void doAction(String action) {
 		int number = Integer.parseInt(action);
-		while(true) {
-			if(number < Task_List.tasks.size()-1 && number > 0) {
+	
+			if(number <= Task_List.tasks.size() && number > 0) {
 				Task task = Task_List.tasks.get(number-1);
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 				String dueDate = task.getDueDate().format(formatter);
@@ -45,6 +48,14 @@ public class Modify_Task extends Actions{
 				System.out.println("Due date: " + dueDate);
 				System.out.print("New due date(dd-mm-yyyy): ");
 				String newDueDate = scanner.nextLine();
+		         String pattern = "^\\d{2}-\\d{2}-\\d{4}$"; 
+		         Boolean matches = Pattern.matches(pattern, newDueDate); 
+		         while(! matches) {
+		        	 System.out.println("Please enter the correct format Due Date (dd-mm-yyyy):"); 
+			         newDueDate = scanner.nextLine();
+			         matches = Pattern.matches(pattern, newDueDate);
+		         }
+		        
 				if(!newDueDate.isEmpty()) {
 					LocalDate newDueDate2 = LocalDate.parse(newDueDate, formatter);
 					task.setDueDate(newDueDate2);
@@ -57,11 +68,13 @@ public class Modify_Task extends Actions{
 				}
 				System.out.println("Priority: " + task.getPriority());
 				System.out.print("Updated priority(1-3): ");
-				String priority = scanner.nextLine();
-				if(!priority.isEmpty()) {
-					int newPriority = Integer.parseInt(priority);
+				String newPriority_user = scanner.nextLine();
+				int newpriority = Integer.parseInt(newPriority_user);
+				if(!newPriority_user.isEmpty()) {
+					int newPriority = task.getPriority();
 					task.setPriority(newPriority);
 				}
+				
 				System.out.println("Category: " + task.getCategory());
 				System.out.print("New category: ");
 				String category = scanner.nextLine();
@@ -95,8 +108,13 @@ public class Modify_Task extends Actions{
 			}
 			else {
 				System.out.println("Please enter a number between 1 and " + Task_List.tasks.size());
+				
 			}
 		}
+
+
+		
 	}
-}
+	
+
 

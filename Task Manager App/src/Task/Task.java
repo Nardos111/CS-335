@@ -59,7 +59,7 @@ public class Task {
 	}
 	
 	public String toString() {
-		return title + ", " + dueDate + ", " + description + ", " + priority + ", " + category + ", " + status;
+		return title + "," + dueDate + "," + description + "," + priority + "," + category + "," + status;
 	}
 	
 	public static Task buildTask(String title, LocalDate dueDate, String description, int priority, String category, String status) {

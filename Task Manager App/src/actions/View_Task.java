@@ -12,22 +12,26 @@ public class View_Task  extends Actions{
 	public String userInput() {
 		while(true) {
 			System.out.println("Enter task number to view details: ");
-			try (Scanner scanner = new Scanner(System.in)) {
+			Scanner scanner = new Scanner(System.in); 
 				String userInput = scanner.nextLine();
 				try {
 					int number = Integer.parseInt(userInput);
 				} catch(NumberFormatException nfe) {
 					System.out.println("Please enter a valid input. ");
 				}
+			
 				return userInput;
 			}
-		}
-	}
+		} 
+	
 	
 	public void doAction(String action) {
 		int number = Integer.parseInt(action);
-		while(true) {
-			if(number < Task_List.tasks.size()-1 && number > 0) {
+			//if(number < Task_List.tasks.size()-1 && number > 0) {
+		if (number < 1 || number > Task_List.tasks.size()) { 
+			System.out.println("Please enter a number between 1 and " + Task_List.tasks.size());
+			return; } 
+			
 				Task task = Task_List.tasks.get(number-1);
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 				String dueDate = task.getDueDate().format(formatter);
@@ -37,12 +41,9 @@ public class View_Task  extends Actions{
 				System.out.println("Priority: " + task.getPriority());
 				System.out.println("Category: " + task.getCategory());
 				System.out.println("Status: " + task.getStatus());
-				System.out.println("");
-				break;
+				System.out.println(""); 
+
 			}
-			else {
-				System.out.println("Please enter a number between 1 and " + Task_List.tasks.size());
-			}
-		}
+			
 	}
-}
+  

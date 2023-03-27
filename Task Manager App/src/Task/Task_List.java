@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +28,13 @@ public class Task_List {
 	public void startApplication() {
 		while(Task_List.openApplication) {
 			displayInstruction();
+			readFile("./Task_file/task_list");
 			int selectAction = getInput();
 			doAction(selectAction);
 		}
 	}
+	
+
 	
 	public void doAction(int selectAction) {
 		Actions action;
@@ -77,6 +81,7 @@ public class Task_List {
 		case Actions.QUIT:
 			saveToFile("file_path");
 			openApplication = false;
+			System.out.println("Closing application...");
 			break;
 		}
 	}
@@ -91,33 +96,35 @@ public class Task_List {
 		System.out.println("3  View all tasks");
 		System.out.println("4. Modify task");
 		System.out.println("5. Delete task");
-		System.out.println("6. Query task");
-		System.out.println("7. Sort task");
-		System.out.println("8. Filter task");
-		System.out.println("9. Quit application");
+		//System.out.println("6. Query task"); //take out 
+		System.out.println("6. Sort task"); // to do alphabetic 
+		System.out.println("7. Filter task"); // to do by numeric 
+		System.out.println("8. Quit application");
 	}
+
 	
 	public int getInput() {
-		List<Integer> options = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-		while (true) {
-			try {
-				System.out.println("What do you want to do? Select a number from the listed options: ");
-				try (Scanner scanner = new Scanner(System.in)) {
-					int selection = scanner.nextInt();
-					if(options.contains(selection)) {
-						return selection;
-					}
-					else {
-						System.out.println("Plese enter a number between 1 - 9: ");
-					}
-				}
-				
-			} catch(Exception err) {
-				System.out.println("Please enter a valid input");
-			}
+	    List<Integer> options = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+	    Scanner scanner = new Scanner(System.in); 
+			System.out.println("What do you want to do? Select a number from the listed options: ");
+			boolean kg = false;
+			int selection1;
+			do {
+			    selection1 = scanner.nextInt();
+			    if (options.contains(selection1)) {
+			        kg = true;
+			    } else {
+			        System.out.println("Invalid input. Please select a number from the listed options: ");
+			    }
+			    
+			} while(!kg);
+   
+			return selection1;
 		}
-		
-	}
+	
+
+
+
 	
 	public void readFile(String filePath) {
 		try {
@@ -125,7 +132,7 @@ public class Task_List {
 			while(scanner.hasNextLine()) {
 				String taskLine = scanner.nextLine();
 				String[] sections = taskLine.split(",");
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				LocalDate dueDate = LocalDate.parse(sections[1], formatter);
 				int priority = Integer.parseInt(sections[3]);
 				Task task = Task.buildTask(sections[0],dueDate,sections[2],priority,sections[4],sections[5]);
@@ -134,7 +141,7 @@ public class Task_List {
 			}
 			scanner.close();
 		}
-		catch(FileNotFoundException e) {
+		catch(FileNotFoundException err) {
 			System.out.println("File does not exist");
 		}
 	}
@@ -147,6 +154,7 @@ public class Task_List {
 			tasks.forEach((task) -> {
 				pWriter.println(task);
 			});
+			pWriter.flush();
 			pWriter.close();
 		} catch(IOException e) {
 			System.out.println("File does not exist");
@@ -156,7 +164,7 @@ public class Task_List {
 	public void showSummary() {
 		AtomicInteger counter = new AtomicInteger(1);
 		tasks.forEach(task -> {
-			System.out.print(counter.get() + ". " + task.getTitle());
+			System.out.print(counter.get() + ". " + task.getTitle() + "\n");
 			counter.getAndIncrement(); 
 		});	
 	}
