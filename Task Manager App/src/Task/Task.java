@@ -2,7 +2,7 @@ package Task;
 
 import java.time.LocalDate;
 
-public class Task {
+public class Task implements Comparable <Task> {
 	private String title;
 	private LocalDate dueDate;
 	private String description;
@@ -61,6 +61,10 @@ public class Task {
 	public String toString() {
 		return title + "," + dueDate + "," + description + "," + priority + "," + category + "," + status;
 	}
+	
+	public int compareTo(Task o) {
+	    return this.getDueDate().compareTo(o.getDueDate());
+	 }
 	
 	public static Task buildTask(String title, LocalDate dueDate, String description, int priority, String category, String status) {
 		Task task = new Task();

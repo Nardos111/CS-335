@@ -78,6 +78,14 @@ public class Task_List {
 			action.doAction(userInput5);
 			break;
 			
+		case Actions.SORT_TASKS:
+			action = new Sort_Tasks();
+			action.displayMessage();
+			String userInput6 = action.userInput();
+			action.doAction(userInput6);
+			showSummary();
+			break;
+			
 		case Actions.QUIT:
 			saveToFile("file_path");
 			openApplication = false;
