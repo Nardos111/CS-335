@@ -86,6 +86,13 @@ public class Task_List {
 			showSummary();
 			break;
 			
+		case Actions.FILTER_TASKS:
+			action = new Filter_Tasks();
+			action.displayMessage();
+			String userInput7 = action.userInput();
+			action.doAction(userInput7);
+			break;
+			
 		case Actions.QUIT:
 			saveToFile("file_path");
 			openApplication = false;
