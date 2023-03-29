@@ -33,7 +33,8 @@ public class Create_Task extends Actions {
 	        System.out.println("Description:");
 	        String description = scanner.nextLine();
 	        System.out.println("Priority (1-3):");
-	        String priority = scanner.nextLine();
+		int priority = Integer.parseInt(scanner.nextLine());
+	 
 	        System.out.println("Category:");
 	        String category = scanner.nextLine();
 	        System.out.println("Status (1. To-do, 2. In-progress, 3. Completed):");
@@ -45,7 +46,7 @@ public class Create_Task extends Actions {
 	            continue;
 	        }
 	      
-	        if (!title.isEmpty() && "123".contains(priority) && status >= 1 && status <= 3 ) {
+	        if (!title.isEmpty() && priority >= 1 && priority <= 3 && status >= 1 && status <= 3) {
 	            return title + "," + dueDate + "," + description + "," + priority + "," + category + "," + status;
 	        } else {
 	            System.out.println("Invalid input, please try again.");
