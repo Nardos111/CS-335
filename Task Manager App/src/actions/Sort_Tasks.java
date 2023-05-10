@@ -8,7 +8,7 @@ import Task.Task_List;
 public class Sort_Tasks  extends Actions{
 	
 	public void displayMessage() {
-		System.out.println("Sortings tasks...");
+		System.out.println("Sortings tasks by due date...");
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
