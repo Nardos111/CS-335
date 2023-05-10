@@ -49,8 +49,7 @@ public class Filter_Tasks  extends Actions{
 			System.out.println("2 ");
 			System.out.println("3 ");
 			String userInput = scanner.nextLine();
-		
-			   while(!NUMS.contains(userInput)){
+			while(!NUMS.contains(userInput)){
 				   System.out.println("Please enter 1, 2 or 3"); 
 				   userInput = scanner.nextLine(); } 
 			switch(userInput) {
@@ -64,7 +63,9 @@ public class Filter_Tasks  extends Actions{
 				filteredTasks = Task_List.tasks.stream().filter(task -> task.getPriority()==3).collect(Collectors.toList());
 				break;
 			}
-			break; } 
+			break; 
+		} 
+			break;
 			
 		case "2":
 			while(true) {
@@ -72,6 +73,7 @@ public class Filter_Tasks  extends Actions{
 			String userInput2 = scanner.nextLine();
 			filteredTasks = Task_List.tasks.stream().filter(task -> task.getCategory().contains(userInput2)).collect(Collectors.toList());
 			break; } 
+			break;
 		case "3":
 			while(true) {
 				System.out.println("Which task status do you want to filter? ");
@@ -97,6 +99,7 @@ public class Filter_Tasks  extends Actions{
 				}
 				break;
 			}
+			break;
 		}
 		if(filteredTasks.size()==0) {
 			System.out.print("There is no task with that specification");
