@@ -26,13 +26,12 @@ public class Filter_Tasks  extends Actions{
 			System.out.println("3. Status");
 			Scanner scanner = new Scanner(System.in);
 			String userChoice = scanner.nextLine();
-			try {
-				int number = Integer.parseInt(userChoice);
-			} 
-//			needs validation to check if user input is between 1-3
-			catch (NumberFormatException nfe) {
-				System.out.println("Please enter a valid input");
-			}
+			String NUMS = "123"; 
+			   while(!NUMS.contains(userChoice)){
+				   System.out.println("Please enter 1, 2 or 3"); 
+				   userChoice = scanner.nextLine(); } 
+
+			
 			return userChoice;	
 		}
 	}
@@ -41,20 +40,19 @@ public class Filter_Tasks  extends Actions{
 	public void doAction(String action) {
 		List<Task> filteredTasks = null;
 		Scanner scanner = new Scanner(System.in);
+		String NUMS = "123"; 
 		switch(action) {
 		case "1":
+			while(true) {
 			System.out.println("Which priority do you want to select?");
 			System.out.println("1 ");
 			System.out.println("2 ");
 			System.out.println("3 ");
 			String userInput = scanner.nextLine();
-			try {
-				int number = Integer.parseInt(userInput);
-			} 
-//				needs another validation to check if user enters a number between 1-3
-			catch(NumberFormatException nfe) {
-				System.out.println("Please enter a valid input");
-			}
+		
+			   while(!NUMS.contains(userInput)){
+				   System.out.println("Please enter 1, 2 or 3"); 
+				   userInput = scanner.nextLine(); } 
 			switch(userInput) {
 			case "1":
 				filteredTasks = Task_List.tasks.stream().filter(task -> task.getPriority()==1).collect(Collectors.toList());
@@ -66,12 +64,14 @@ public class Filter_Tasks  extends Actions{
 				filteredTasks = Task_List.tasks.stream().filter(task -> task.getPriority()==3).collect(Collectors.toList());
 				break;
 			}
-			break;
+			break; } 
+			
 		case "2":
+			while(true) {
 			System.out.println("What category do you want to use to filter your tasks? ");
 			String userInput2 = scanner.nextLine();
 			filteredTasks = Task_List.tasks.stream().filter(task -> task.getCategory().contains(userInput2)).collect(Collectors.toList());
-			break;
+			break; } 
 		case "3":
 			while(true) {
 				System.out.println("Which task status do you want to filter? ");
@@ -79,11 +79,11 @@ public class Filter_Tasks  extends Actions{
 				System.out.println("2. In-progress");
 				System.out.println("3. Completed");
 				String userInput3 = scanner.nextLine();
-				try {
-					int number = Integer.parseInt(userInput3);
-				} catch(NumberFormatException nfe) {
-						System.out.println("Please enter a valid input. ");
-				}	
+			
+				   while(!NUMS.contains(userInput3)){
+					   System.out.println("Please enter 1, 2 or 3"); 
+					   userInput3 = scanner.nextLine(); } 
+				   
 				switch(userInput3) {
 				case "1":
 					filteredTasks = Task_List.tasks.stream().filter(task -> task.getStatus().contains("To-do")).collect(Collectors.toList());

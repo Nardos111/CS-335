@@ -15,6 +15,8 @@ public class Create_Task extends Actions {
 	
 	public String userInput() {
 	    Scanner scanner = new Scanner(System.in);
+	    int[] NUMS = {1,2,3};  
+	
 	    while (true) {
 	        System.out.println("Enter task:");
 	        System.out.println("Title:");
@@ -32,21 +34,27 @@ public class Create_Task extends Actions {
 	   
 	        System.out.println("Description:");
 	        String description = scanner.nextLine();
-	        System.out.println("Priority (1-3):");
-		int priority = Integer.parseInt(scanner.nextLine());
+	     
+	        System.out.println("Priority (1,2 or 3):");
+	    
+	   
+	        	int priority = Integer.parseInt(scanner.nextLine()); 
+	            while(priority<1 | priority>3 ){
+		        	System.out.println(" Please enter a number between 1 and 3"); 
+		        	 priority = scanner.nextInt();} 
 	 
 	        System.out.println("Category:");
 	        String category = scanner.nextLine();
+	        
 	        System.out.println("Status (1. To-do, 2. In-progress, 3. Completed):");
-	        int status = 0;
-	        try {
-	            status = Integer.parseInt(scanner.nextLine());
-	        } catch (NumberFormatException err) {
-	            System.out.println("Invalid status, please enter a number between 1 and 3.");
-	            continue;
-	        }
-	      
-	        if (!title.isEmpty() && priority >= 1 && priority <= 3 && status >= 1 && status <= 3) {
+	        int status = Integer.parseInt(scanner.nextLine());
+	     
+	        while(status<1 | status>3 ){
+	        	System.out.println(" Please enter a number between 1 and 3"); 
+	        	status = scanner.nextInt(); }
+	     
+	        
+	        if (!title.isEmpty()) {
 	            return title + "," + dueDate + "," + description + "," + priority + "," + category + "," + status;
 	        } else {
 	            System.out.println("Invalid input, please try again.");

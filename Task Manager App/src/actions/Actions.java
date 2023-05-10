@@ -8,7 +8,8 @@ public abstract class Actions {
 	public static final int DELETE_TASK = 5;
 	public static final int SORT_TASKS = 6;
 	public static final int FILTER_TASKS = 7;
-	public static final int QUIT = 8;
+	public static final int DOWNLOAD = 8;
+	public static final int QUIT = 9;
 	
 	
 	public abstract void displayMessage();

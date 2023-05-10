@@ -92,7 +92,10 @@ public class Task_List {
 			String userInput7 = action.userInput();
 			action.doAction(userInput7);
 			break;
-			
+		case Actions.DOWNLOAD:
+			downloadtemplate("Template_download");
+			System.out.println("Template Downloaded...");
+			break;
 		case Actions.QUIT:
 			saveToFile("file_path");
 			openApplication = false;
@@ -111,10 +114,10 @@ public class Task_List {
 		System.out.println("3  View all tasks");
 		System.out.println("4. Modify task");
 		System.out.println("5. Delete task");
-		//System.out.println("6. Query task"); //take out 
 		System.out.println("6. Sort task"); // to do alphabetic 
-		System.out.println("7. Filter task"); // to do by numeric 
-		System.out.println("8. Quit application");
+		System.out.println("7. Filter task"); // to do by numeric
+		System.out.println("8. Download Template"); // to do by numeric
+		System.out.println("9. Quit application");
 	}
 
 	
@@ -146,6 +149,43 @@ public class Task_List {
 			Scanner scanner = new Scanner(new File(filePath));
 			while(scanner.hasNextLine()) {
 				String taskLine = scanner.nextLine();
+				String[] sections = taskLine.split(",");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDate dueDate = LocalDate.parse(sections[1], formatter);
+				int priority = Integer.parseInt(sections[3]);
+				Task task = Task.buildTask(sections[0],dueDate,sections[2],priority,sections[4],sections[5]);
+				tasks.add(task);
+				
+			}
+			scanner.close();
+		}
+		catch(FileNotFoundException err) {
+			System.out.println("File does not exist");
+		}
+	}
+	public void downloadtemplate(String filePath) {
+		String heading = "Template for Syllabus"; 
+		String  elements = "Title Due Date (dd-mm-yyyy) Description Priority (1-3) Category Status (1. To-do, 2. In-progress, 3. Completed)"; 
+		
+		try {
+			File template = new File(filePath);
+			FileWriter fw = new FileWriter(template);
+			PrintWriter pw = new PrintWriter(fw);
+			pw.write(heading);
+			pw.write(elements);
+			
+			pw.flush();
+			 pw.close();}
+		catch(IOException e){
+			System.out.println("File does not save");
+		}
+		}
+	
+	public void readSyllabus(String filePath) {
+		try {
+			Scanner scanner = new Scanner(new File(filePath));
+			while(scanner.hasNextLine()) {
+				String taskLine = scanner.nextLine(); 
 				String[] sections = taskLine.split(",");
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				LocalDate dueDate = LocalDate.parse(sections[1], formatter);

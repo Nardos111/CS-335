@@ -1,5 +1,7 @@
-fd,1999-01-01,fd,3,fd,In-progress
-fd,2000-01-01,re,3,fd,To-do
-fd,2003-02-01,re,3,fd,To-do
-fd,2010-01-01,re,3,fd,To-do
-fd,2002-09-09,fd,3,cd,Completed
+Capstone Class,2000-01-01,cs,3,cs,To-do
+Art hw,2003-02-01,art,3,art,To-do
+math hw,2010-01-01,math,3,math,To-do
+stats,2023-12-12,stats,1,stats,To-do
+stats2,2023-12-12,stats,1,stats,To-do
+gg,2023-12-12,ff,2,gg,In-progress
+dd,2023-12-12,ff,1,f,To-do

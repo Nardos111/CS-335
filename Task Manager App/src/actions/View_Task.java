@@ -14,11 +14,14 @@ public class View_Task  extends Actions{
 			System.out.println("Enter task number to view details: ");
 			Scanner scanner = new Scanner(System.in); 
 				String userInput = scanner.nextLine();
-				try {
+				
+			
 					int number = Integer.parseInt(userInput);
-				} catch(NumberFormatException nfe) {
-					System.out.println("Please enter a valid input. ");
-				}
+					while (number <= 0 & number >Task_List.tasks.size()){ 
+						System.out.println("Please enter a number between 1 and " + Task_List.tasks.size());
+						userInput = scanner.nextLine();
+						number = Integer.parseInt(userInput);} 
+				
 			
 				return userInput;
 			}
@@ -30,6 +33,7 @@ public class View_Task  extends Actions{
 			//if(number < Task_List.tasks.size()-1 && number > 0) {
 		if (number < 1 || number > Task_List.tasks.size()) { 
 			System.out.println("Please enter a number between 1 and " + Task_List.tasks.size());
+			
 			return; } 
 			
 				Task task = Task_List.tasks.get(number-1);
