@@ -1,10 +1,12 @@
 package actions;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -70,6 +72,12 @@ public class Filter_Tasks  extends Actions{
 		case "2":
 			while(true) {
 			System.out.println("What category do you want to use to filter your tasks? ");
+			Set<String> categoryList = Task_List.tasks.stream().map(task -> task.getCategory()).collect(Collectors.toSet()); 
+			Iterator<String> it = categoryList.iterator();
+	        while (it.hasNext()) {
+	            System.out.println(it.next());
+	        }
+			System.out.println("Enter cateogry: ");
 			String userInput2 = scanner.nextLine();
 			filteredTasks = Task_List.tasks.stream().filter(task -> task.getCategory().contains(userInput2)).collect(Collectors.toList());
 			break; } 
